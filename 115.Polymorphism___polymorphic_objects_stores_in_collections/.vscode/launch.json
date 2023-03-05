@@ -1,0 +1,34 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "1. (lldb) Launch (SINGLE FILE)", //update debugging name
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}", //update program name to match what we build
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "preLaunchTask": "1. Build Current File With G++" //add our g++ build task as a pre launch task
+        },
+        {
+            "name": "2. (lldb) Launch (MULTIPLE Files)", //update debugging name
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/program", //update program name to match what we build
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "preLaunchTask": "2. Build All Source Files With G++" //add our g++ build task as a pre launch task
+        }
+    ]
+}
