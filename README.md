@@ -5,7 +5,9 @@ At time of writing all code builds with g++ (Homebrew GCC 12.2.0) 12.2.0 using -
 
 ### All folders are considered there own workspace.
 
-## The tasks.json I used per folder...
+Below are my visual studio settings, if only to serve as a guide to my future self.
+
+## tasks.json
 ```
 {
 	"version": "2.0.0",
@@ -33,5 +35,49 @@ At time of writing all code builds with g++ (Homebrew GCC 12.2.0) 12.2.0 using -
 			"detail": "compiler: /opt/homebrew/bin/g++"
 		}
 	]
+}
+```
+
+## launch.json
+```
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "2. (lldb) Launch (MULTIPLE Files)", //update debugging name
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/program", //update program name to match what we build
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "preLaunchTask": "2. Build All Source Files With G++" //add our g++ build task as a pre launch task
+        }
+    ]
+}
+```
+
+## c_cpp_properties.json
+```
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [],
+            "macFrameworkPath": [
+                "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"
+            ],
+            "compilerPath": "/usr/bin/clang",
+            "intelliSenseMode": "macos-clang-arm64",
+            "cppStandard": "c++20"
+        }
+    ],
+    "version": 4
 }
 ```
